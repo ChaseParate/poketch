@@ -3,33 +3,19 @@
 
 #include "raylib.h"
 
+#include "constants.hpp"
+
 int main()
 {
-    const int gameWidth = 256;
-    const int gameHeight = 192;
-
-    const int poketchWidth = 192;
-    const int poketchHeight = 160;
-    const Vector2 poketchOffset = {16, 16};
-
-    const int windowScale = 3;
-    const int windowWidth = gameWidth * windowScale;
-    const int windowHeight = gameHeight * windowScale;
-
     InitWindow(windowWidth, windowHeight, "Pokétch");
     SetTargetFPS(60);
 
     RenderTexture2D gameScreen = LoadRenderTexture(gameWidth, gameHeight);
     RenderTexture2D poketchScreen = LoadRenderTexture(poketchWidth, poketchHeight);
 
-    const Color backgroundColor = {112, 176, 112, 255};
-    const Color foregroundColor = {56, 80, 48, 255};
     const Texture2D borderTexture = LoadTexture("assets/border_plat.png");
 
     const Texture2D digitalWatchBackground = LoadTexture("assets/digital_watch_background.png");
-    const float digitalWatchDigitWidth = 32;
-    const float digitalWatchDigitHeight = 72;
-    const int digitalWatchNumDigits = 10;
     const Texture2D digitalWatchDigitsTexture = LoadTexture("assets/digital_watch_digits.png");
     Rectangle digitalWatchDigitBoundingBoxes[digitalWatchNumDigits];
     for (int i = 0; i < digitalWatchNumDigits; i++)
