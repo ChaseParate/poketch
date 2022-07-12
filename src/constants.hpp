@@ -17,8 +17,4 @@ const Vector2 poketchOffset = {16, 16};
 const Color backgroundColor = {112, 176, 112, 255};
 const Color foregroundColor = {56, 80, 48, 255};
 
-const float digitalWatchDigitWidth = 32;
-const float digitalWatchDigitHeight = 72;
-const int digitalWatchNumDigits = 10;
-
 #endif
