@@ -2,33 +2,33 @@
 
 int main()
 {
-    const int screenWidth = 256;
-    const int screenHeight = 192;
+    const int displayWidth = 256;
+    const int displayHeight = 192;
 
     const int windowScale = 3;
-    const int windowWidth = screenWidth * windowScale;
-    const int windowHeight = screenHeight * windowScale;
+    const int windowWidth = displayWidth * windowScale;
+    const int windowHeight = displayHeight * windowScale;
 
     InitWindow(windowWidth, windowHeight, "Pokétch");
     SetTargetFPS(60);
 
-    RenderTexture2D screen = LoadRenderTexture(screenWidth, screenHeight);
+    RenderTexture2D window = LoadRenderTexture(displayWidth, displayHeight);
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
 
-        BeginTextureMode(screen);
+        BeginTextureMode(window);
         ClearBackground(RAYWHITE);
         DrawText("Hello World!", 0, 0, 20, LIGHTGRAY);
         EndTextureMode();
 
-        DrawTexturePro(screen.texture, {0, 0, screenWidth, -screenHeight}, {0, 0, windowWidth, windowHeight}, {0, 0}, 0, WHITE);
+        DrawTexturePro(window.texture, {0, 0, displayWidth, -displayHeight}, {0, 0, windowWidth, windowHeight}, {0, 0}, 0, WHITE);
 
         EndDrawing();
     }
 
-    UnloadRenderTexture(screen);
+    UnloadRenderTexture(window);
     CloseWindow();
 
     return 0;
