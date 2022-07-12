@@ -1,3 +1,6 @@
+#ifndef CONSTANTS_HPP
+#define CONSTANTS_HPP
+
 #include "raylib.h"
 
 const int gameWidth = 256;
@@ -17,3 +20,5 @@ const Color foregroundColor = {56, 80, 48, 255};
 const float digitalWatchDigitWidth = 32;
 const float digitalWatchDigitHeight = 72;
 const int digitalWatchNumDigits = 10;
+
+#endif
