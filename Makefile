@@ -2,22 +2,25 @@ COMPILER=clang++
 COMPILER_FLAGS=-g -Wall -std=c++20
 LINKER_FLAGS=$(shell pkg-config --libs --cflags raylib)
 
-SRC_DIR=src
-OBJ_DIR=build
-SRCS=$(shell find $(SRC_DIR) -type f -name '*.cpp')
-OBJS=$(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
-HDRS=$(shell find $(SRC_DIR) -type f -name '*.hpp')
-BIN=executable
+SOURCE_DIR=src
+OBJECT_DIR=build
 
-all: $(BIN)
+SOURCE_FILES=$(shell find $(SOURCE_DIR) -type f -name '*.cpp')
+OBJECT_FILES=$(patsubst $(SOURCE_DIR)/%.cpp,$(OBJECT_DIR)/%.o,$(SOURCE_FILES))
+HEADER_FILES=$(shell find $(SOURCE_DIR) -type f -name '*.cpp')
 
-$(BIN): $(OBJS)
-	$(COMPILER) $(COMPILER_FLAGS) $(OBJS) -o $@ $(LINKER_FLAGS)
+BINARY=executable
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	mkdir -p $(@D)
+
+all: $(BINARY)
+
+$(BINARY): $(OBJECT_FILES)
+	$(COMPILER) $(COMPILER_FLAGS) $(OBJECT_FILES) -o $@ $(LINKER_FLAGS)
+
+$(OBJECT_DIR)/%.o: $(SOURCE_DIR)/%.cpp
+	mkdir -p $(dir $@)
 	$(COMPILER) $(COMPILER_FLAGS) -c $< -o $@
 
 clean:
-	$(RM) -r $(OBJ_DIR)
-	$(RM) $(BIN)
+	$(RM) -r $(OBJECT_DIR)
+	$(RM) $(BINARY)
