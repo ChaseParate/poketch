@@ -21,16 +21,14 @@ void DigitalWatch::draw()
 
     hours = now->tm_hour;
     minutes = now->tm_min;
-    separatorBlink = now->tm_sec % 2 == 1;
 
     DrawTextureV(background, {0, 0}, WHITE);
     drawDigit(hours / numDigits, 8, 40);
     drawDigit(hours % numDigits, 48, 40);
+
+    DrawRectangle(88, 56, 8, 8, foregroundColor);
+    DrawRectangle(88, 88, 8, 8, foregroundColor);
+
     drawDigit(minutes / numDigits, 104, 40);
     drawDigit(minutes % numDigits, 144, 40);
-    if (separatorBlink)
-    {
-        DrawRectangle(88, 57, 8, 8, foregroundColor);
-        DrawRectangle(88, 88, 8, 8, foregroundColor);
-    }
 }

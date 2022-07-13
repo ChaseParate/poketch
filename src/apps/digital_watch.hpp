@@ -14,7 +14,6 @@ private:
 
     int hours;
     int minutes;
-    bool separatorBlink;
 
     void drawDigit(int digit, float x, float y);
 
