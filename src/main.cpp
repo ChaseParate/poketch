@@ -1,7 +1,7 @@
 #include "raylib.h"
 
 #include "constants.hpp"
-#include "digital_watch.hpp"
+#include "apps/digital_watch.hpp"
 
 int main()
 {

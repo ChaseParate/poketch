@@ -4,7 +4,7 @@
 #include <string>
 #include "raylib.h"
 
-#include "constants.hpp"
+#include "../constants.hpp"
 
 void DigitalWatch::drawDigit(int digit, float x, float y)
 {

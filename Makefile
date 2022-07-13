@@ -4,21 +4,19 @@ LINKER_FLAGS=$(shell pkg-config --libs --cflags raylib)
 
 SRC_DIR=src
 OBJ_DIR=build
-SRCS=$(wildcard $(SRC_DIR)/*.cpp)
+SRCS=$(shell find $(SRC_DIR) -type f -name '*.cpp')
 OBJS=$(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
-HDRS=$(wildcard $(SRC_DIR)/*.hpp)
+HDRS=$(shell find $(SRC_DIR) -type f -name '*.hpp')
 BIN=executable
 
 all: $(BIN)
 
-$(BIN): $(OBJS) $(OBJ_DIR)
+$(BIN): $(OBJS)
 	$(COMPILER) $(COMPILER_FLAGS) $(OBJS) -o $@ $(LINKER_FLAGS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(OBJ_DIR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	mkdir -p $(@D)
 	$(COMPILER) $(COMPILER_FLAGS) -c $< -o $@
-
-$(OBJ_DIR):
-	mkdir -p $@
 
 clean:
 	$(RM) -r $(OBJ_DIR)
